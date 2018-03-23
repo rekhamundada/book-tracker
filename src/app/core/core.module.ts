@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { DataService } from './data.service';
 import { ErrorHandlerService } from './error-handler.service';
 import { BookResolverService } from './books-resolver.service';
@@ -7,6 +7,7 @@ import { AddHeaderInterceptor } from './add-header.interceptor';
 import { LogResponseInterceptor } from './log-response.interceptor';
 import { CacheService } from './http-cache.service';
 import { CacheInterceptorService } from './cache.interceptor';
+import { LoggerService } from './logger.service';
 
 @NgModule({
   imports: [],
@@ -14,7 +15,9 @@ import { CacheInterceptorService } from './cache.interceptor';
   declarations: [],
   providers: [
     DataService,
+    LoggerService,
     ErrorHandlerService,
+   // {provide: ErrorHandler, useClass: ErrorHandlerService },
     BookResolverService,
     CacheService,
     {provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true },

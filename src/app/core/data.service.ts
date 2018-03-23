@@ -21,9 +21,7 @@ mostPopularBook: Book = allBooks[0];
 setMostPopularBook(popularBook: Book): void {
   this.mostPopularBook = popularBook;
 }
-// getMostPopularBook(): void {
 
-// }
 getAllReaders(): Reader[] {
   return allReaders;
 }

@@ -1,3 +1,4 @@
+import { LoggerService } from './../core/logger.service';
 import { DataService } from './../core/data.service';
 import { Component, OnInit, VERSION } from '@angular/core';
 import { Book } from '../models/book';
@@ -17,8 +18,11 @@ export class DashboardComponent implements OnInit {
   mostPopularBook: Book;
 
   constructor(private dataService: DataService,
+              private loggerService: LoggerService,
               private route: ActivatedRoute,
-              private title: Title) { }
+              private title: Title) {
+                this.loggerService.log('Creating the Dashboard');
+              }
 
   ngOnInit() {
     // get books with resolvers
@@ -53,5 +57,8 @@ export class DashboardComponent implements OnInit {
         },
         (err) => console.log(err)
       );
+  }
+  deleteReader(readerID: number): void {
+    console.warn(`Delete reader not yet implemented (readerID: ${readerID}).`);
   }
 }
